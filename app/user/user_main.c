@@ -116,7 +116,7 @@ LOCAL void ICACHE_FLASH_ATTR keyInit(void) {
 //时间服务器初始化
 void ICACHE_FLASH_ATTR my_sntp_init(void)
 {
-	ip_addr_t * addr = (ip_addr_t *) os_zalloc(sizeof(ip_addr_t));
+	ip_addr_t * addr = (ip_addr_t *) os_zalloc(sizeof(ip_addr_t));//ip_addr_t *addr：IP 地址；⽤户需⾃⾏确保，传⼊的是合法 SNTP 服务器
 
 	sntp_setservername(0, "us.pool.ntp.org");
 	sntp_setservername(1, "ntp.sjtu.edu.cn");
@@ -128,7 +128,7 @@ void ICACHE_FLASH_ATTR my_sntp_init(void)
 
 //get请求结束回调
 void ICACHE_FLASH_ATTR http_dis_cb(){
-	os_timer_arm(&checkTimer_updata, 1000, true);
+	os_timer_arm(&checkTimer_updata, 1000, true);//使能毫秒级定时器
 }
 
 //get请求回调
